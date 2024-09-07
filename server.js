@@ -1,5 +1,5 @@
-import { config } from "dotenv";
 import express from "express";
+import { config } from "dotenv";
 import { createDataBase } from "./config/config.js";
 import surveyRouter from "./routes/surveyRoutes.js";
 import userRouter from "./routes/userRoutes.js";

@@ -5,8 +5,9 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
+    "dev": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -19,13 +20,10 @@
   },
   "homepage": "https://github.com/Altair015/Survey-Api-EN#readme",
   "dependencies": {
+    "debug": "^4.3.7",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.11.0"
-  },
-  "devDependencies": {
-    "morgan": "^1.10.0",
-    "nodemon": "^3.1.4"
   }
 }

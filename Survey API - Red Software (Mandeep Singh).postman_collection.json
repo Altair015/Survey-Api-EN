@@ -1,0 +1,126 @@
+{
+	"info": {
+		"_postman_id": "5a100396-4fc8-45b8-a741-b7e855c20984",
+		"name": "Survey API - Red Software (Mandeep Singh)",
+		"description": "\"This API can be used to generate a token by providing an arbitrary username and password. The generated token can then be used to create, take, and view the results of a survey.\"",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "27237826"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"test\",\r\n    \"password\":\"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:4000/signin",
+				"description": "This endpoint allows users to sign in by sending a POST request to the specified URL. The request should include a JSON payload in the raw request body type with the \"username\" and \"password\" fields.\n\n### Request Body\n\n- `username` (string): The username of the user.\n    \n- `password` (string): The password of the user.\n    \n\nUpon successful execution, the server will respond with a status code of 201 and a JSON object in the response body with the following fields:\n\n- `msg` (string): A message indicating the result of the sign-in attempt.\n    \n- `auth_token` (string): A token that can be used for authentication in subsequent requests.\n    \n\nThe Content-Type of the response is \"application/json\".\n\nExample:\n\n``` json\n{\n    \"msg\": \"Success\",\n    \"auth_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\"\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Survey",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InRlc3QiLCJpYXQiOjE3MjU3MTQyMTAsImV4cCI6MTcyNTcxNzIxMH0.i_uD1C6BcTVTK0sOwhPr1-41aNKad6a0xUO8v9OcWDE"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"surveyName\": \"Employee Engagement\",\r\n        \"questions\": [\r\n            \"Are you satisfied with your role?\",\r\n            \"Do you feel appreciated by your team?\",\r\n            \"Is your work environment comfortable?\",\r\n            \"Do you have opportunities for growth?\",\r\n            \"Would you recommend this company to others?\"\r\n        ]\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:4000/create",
+				"description": "### Create Survey\n\nThis endpoint allows the user to create a new survey.\n\n#### Request\n\n- Method: POST\n    \n- URL: `http://localhost:4000/create`\n    \n- Headers:\n    \n    - Authorization: Bearer JWT_TOKEN\n        \n    - Content-Type: application/json\n        \n- Body:\n    \n    ``` json\n      {\n        \"surveyName\": \"string\",\n        \"questions\": [\"string\"]\n      }\n    \n     ```\n    \n\nThe `surveyName` field is optional. If provided, it specifies the name of the survey. The `questions` field is an array of strings representing the survey questions.\n\n#### Response\n\n- Status: 201\n    \n- Content-Type: application/json\n    \n- Body:\n    \n    ``` json\n      {\n        \"msg\": \"string\"\n      }\n    \n     ```\n    \n\nThe response contains a message indicating the outcome of the survey creation process."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Survey List",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InRlc3QiLCJpYXQiOjE3MjU3MTU0MTUsImV4cCI6MTcyNTcxODQxNX0.Xf0NiDkOmDQx6A-KsaqVGNV57fbhGox-Us1foIs_5lg"
+					}
+				],
+				"url": "http://localhost:4000/surveys",
+				"description": "### GET /surveys\n\nThis endpoint retrieves the list of surveys available.\n\n#### Request Body\n\nThis request does not require a request body.\n\n#### Response\n\n- Status: 200\n    \n- Content-Type: application/json\n    \n\nExample response body:\n\n``` json\n{\n    \"Survey List\": [\"\"]\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Generate Survey",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InRlc3QiLCJpYXQiOjE3MjU3MTU0MTUsImV4cCI6MTcyNTcxODQxNX0.Xf0NiDkOmDQx6A-KsaqVGNV57fbhGox-Us1foIs_5lg"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"surveyName\": \"Customer Satisfaction\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:4000/survey",
+				"description": "### Generate Survey\n\nThis Endpoint/Route is used to generate the questions related to a specific survey by specifying the name of the survey from the Survey list obtained from the POST route /surveys.\n\n#### Request Body\n\n- surveyName (string, required): The name of the survey.\n    \n\n#### Response\n\nThe response will be in JSON format with the following schema:\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"Survey Name\": {\n      \"type\": \"string\"\n    },\n    \"Questions\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"string\"\n      }\n    }\n  }\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Take Survey",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InRlc3QiLCJpYXQiOjE3MjU3MTU0MTUsImV4cCI6MTcyNTcxODQxNX0.Xf0NiDkOmDQx6A-KsaqVGNV57fbhGox-Us1foIs_5lg"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"surveyName\": \"Customer Satisfaction\",\r\n    \"answers\": [true,false,true,false,false]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:4000/take",
+				"description": "### Request\n\nThis endpoint allows the user to submit the response for the questions related to a specific survey as True/False. The request should be a HTTP PUT to `http://localhost:4000/take`.\n\n#### Request Body\n\n- Type: Raw (application/json)\n    \n- Payload:\n    \n    ``` json\n      {\n        \"surveyName\":\"\",\n        \"answers\":[true]\n      }\n    \n     ```\n    \n\n### Response\n\nThe response for this request is a JSON object with the following schema:\n\n``` json\n{\n  \"msg\": \"\"\n}\n\n ```\n\nThe `msg` field in the response object provides a message related to the request execution."
+			},
+			"response": []
+		}
+	]
+}
