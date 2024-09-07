@@ -1,5 +1,5 @@
 {
-  "name": "survey-app-mern",
+  "name": "survey-api-en",
   "version": "1.0.0",
   "description": "This is an application for creating, taking and returning the surveys.",
   "main": "server.js",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Altair015/Survey-App-MERN.git"
+    "url": "git+https://github.com/Altair015/Survey-Api-EN.git"
   },
   "author": "Mandeep Singh",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Altair015/Survey-App-MERN/issues"
+    "url": "https://github.com/Altair015/Survey-Api-EN/issues"
   },
-  "homepage": "https://github.com/Altair015/Survey-App-MERN#readme",
+  "homepage": "https://github.com/Altair015/Survey-Api-EN#readme",
   "dependencies": {
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
