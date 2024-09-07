@@ -1,0 +1,31 @@
+{
+  "name": "survey-app-mern",
+  "version": "1.0.0",
+  "description": "This is an application for creating, taking and returning the surveys.",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Altair015/Survey-App-MERN.git"
+  },
+  "author": "Mandeep Singh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Altair015/Survey-App-MERN/issues"
+  },
+  "homepage": "https://github.com/Altair015/Survey-App-MERN#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.11.0"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.4"
+  }
+}
