@@ -7,7 +7,7 @@ mysql2: Connecting the node with MySql database.
 morgan: For displaying the status for endpoints on the console.
 nodemon: For restarting the server during testing/develoment.
 
-#                                                   DIRECTORY STRUCTURE
+#                                                  DIRECTORY STRUCTURE
 
 │   .env
 │   .gitignore
