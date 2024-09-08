@@ -5,7 +5,7 @@ import surveyRouter from "./routes/surveyRoutes.js";
 import userRouter from "./routes/userRoutes.js";
 config();
 
-const { PORT, HOSTNAME } = process.env;
+const { PORT } = process.env;
 
 const { json } = express;
 
@@ -23,7 +23,7 @@ server.use(surveyRouter);
 
 // Running the Express server on specific port.
 server.listen(
-    PORT, HOSTNAME, () => {
+    PORT, () => {
         // checking and creating if the Database does not exist.
         createDataBase()
         console.log(`Express server is running on port ${PORT}.`)
